@@ -1,8 +1,98 @@
 # Instagram Content Creation (Multi-Agent System)
 
-This project demonstrates a Multi-Agent System (MAS) using **Crew AI** to automate an end-to-end Instagram content creation pipeline.
+An autonomous AI-powered Instagram content pipeline built with CrewAI that researches topics, writes engaging captions, reviews content quality, generates cinematic image prompts, and creates visuals using FLUX image generation models.
 
-The system uses an autonomous team of AI agents to research a topic, write engaging Instagram captions, review the content for quality, and generate detailed image prompts. Finally, it integrates with a Hugging Face inference endpoint (FLUX.1-schnell) to generate the visual assets for the post.
+## Architecture
+
+```mermaid
+flowchart LR
+   A[User Topic Input]
+   B[Research Agent]
+   C[Content Writer Agent]
+   D[Reviewer Agent]
+   E[Image Prompt Agent]
+   F[Hugging Face FLUX API]
+   G[Generated Instagram Package]
+
+   A --> B --> C --> D --> E --> F --> G
+```
+
+## Tech Stack
+
+- Python 3.13.5
+- CrewAI
+- LangChain
+- GitHub Models API
+- Hugging Face Inference API
+- FLUX.1-schnell
+- python-dotenv
+- Pillow
+
+## Why a Multi-Agent Architecture?
+
+Separating responsibilities across specialized agents produces a more robust, maintainable, and higher-quality content pipeline compared to a single monolithic LLM call.
+
+Benefits:
+- Better content quality through specialization
+- Modular design and easier debugging
+- Improved prompt engineering and reuse
+- Scalable workflow automation
+
+## Internal Workflow
+
+1. User provides a topic.
+2. Research Agent gathers trends, references, and supporting ideas.
+3. Writer Agent drafts short and long captions and suggested hooks.
+4. Reviewer Agent refines tone, grammar, and hashtag strategy.
+5. Image Prompt Agent crafts cinematic, model-ready prompts.
+6. Hugging Face FLUX model (e.g. `FLUX.1-schnell`) generates visuals.
+7. Final assets (captions, hashtags, and images) are saved to `outputs/`.
+
+## Getting Started
+
+1. Create a Python 3.10+ virtual environment.
+2. Copy your secrets into a `.env` file (API keys for GitHub Models, Hugging Face, etc.).
+3. Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+4. Run the pipeline:
+
+```bash
+python main.py --topic "Your topic here"
+```
+
+## Future Improvements
+
+- Instagram Reel script generation
+- Auto-posting using the Instagram Graph API
+- Multi-language caption support
+- Memory-enabled agents for context retention
+- Trend scraping from social platforms
+- Agent performance evaluation metrics
+
+## Learning Outcomes
+
+- Multi-Agent AI orchestration patterns
+- LLM workflow automation and prompt engineering
+- API integration with Hugging Face and GitHub Models
+- End-to-end generation of captions and visuals
+
+## License
+
+This project is released under the MIT License.
+
+![Python](https://img.shields.io/badge/Python-3.13.5-blue)
+![CrewAI](https://img.shields.io/badge/CrewAI-MultiAgent-orange)
+![License](https://img.shields.io/badge/License-MIT-green)
+
+If you'd like, I can also:
+- add a `.env.example` template and a minimal `main.py` runner,
+- scaffold agent stubs under `agents/`, or
+- wire up a sample Hugging Face call using `FLUX.1-schnell`.
+
 
 ## System Workflow & Agents
 
