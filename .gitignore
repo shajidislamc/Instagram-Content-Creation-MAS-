@@ -1,5 +1,17 @@
+# Secrets & Environment Variables
 .env
+
+# Python & Notebook Cache
 __pycache__/
 .ipynb_checkpoints/
+*.pyc
+
+# Local Virtual Environments
 venv/
 .venv/
+env/
+
+# Generated Media Outputs
+*.jpg
+*.jpeg
+*.png
